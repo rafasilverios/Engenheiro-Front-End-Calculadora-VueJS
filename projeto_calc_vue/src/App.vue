@@ -8,9 +8,9 @@ const calc = reactive({
   resultado: '',
 });
 
-const selectedOperation = ref('default');
+const selecao = ref('default');
 
-const operations = {
+const operacoes = {
   somar: (n1, n2) => n1 + n2,
   subtrair: (n1, n2) => n1 - n2,
   multiplicar: (n1, n2) => n1 * n2,
@@ -18,9 +18,9 @@ const operations = {
 };
 
 function calcular() {
-  const operationFn = operations[selectedOperation.value];
-  if (operationFn) {
-    return operationFn(calc.n1, calc.n2);
+  const operacaoFn = operacoes[selecao.value];
+  if (operacaoFn) {
+    return operacaoFn(calc.n1, calc.n2);
   }
   return '';
 }
@@ -35,7 +35,7 @@ function calcular() {
       <form>
         <input v-model.number="calc.n1" type="number" required placeholder="Digite o primeiro número">
         <input v-model.number="calc.n2" type="number" required placeholder="Digite o segundo número">
-        <select v-model="selectedOperation">
+        <select v-model="selecao">
           <option value="default" selected>---</option>
           <option value="somar">somar</option>
           <option value="subtrair">subtrair</option>
